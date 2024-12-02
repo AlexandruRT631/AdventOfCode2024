@@ -9,6 +9,13 @@ while (true)
         .Where(t => t.IsClass && !t.IsAbstract && typeof(Part).IsAssignableFrom(t))
         .ToList();
 
+    parts = parts.OrderBy(p =>
+    {
+        var namespaceParts = p.Namespace?.Split('.');
+        var dayName = namespaceParts?.LastOrDefault();
+        return dayName;
+    }).ThenBy(p => p.Name).ToList();
+
     Console.WriteLine("Select a day and a part to run:");
     for (int i = 0; i < parts.Count; i++)
     {
