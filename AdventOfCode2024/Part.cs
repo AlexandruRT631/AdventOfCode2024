@@ -8,5 +8,10 @@
         {
             return [.. File.ReadAllLines(path)];
         }
+
+        public static string ReadFile(string path)
+        {
+            return File.ReadAllText(path);
+        }
     }
 }
